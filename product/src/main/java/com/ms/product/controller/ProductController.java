@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ms.product.model.ProductModel;
 import com.ms.product.service.ProductService;
 
-@RestController("/product")
+@RestController
 public class ProductController {
 
 	ProductService prodServ;
 	
-	@PostMapping("/create")
+	@PostMapping("/product/create")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public String createProduct(@RequestBody ProductModel proModel) {
 		return prodServ.createProduct(proModel);
