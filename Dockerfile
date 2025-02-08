@@ -28,11 +28,14 @@
 # EXPOSE 8080
 # ENTRYPOINT ["java","-jar","/usr/local/lib/product.jar"]
 
+# FROM eclipse-temurin:21-jdk-alpine
+# WORKDIR microServJava/product
+# COPY . ./
+# RUN ./mvnw -DoutputFile=target/mvn-dependency-list.log -B -DskipTests clean dependency:list install
+# CMD ["sh", "-c", "java -jar target/*.jar"]
+
 FROM eclipse-temurin:21-jdk-alpine
 WORKDIR microServJava/product
+RUN microServJava/product/mvnw -DoutputFile=microServJava/product/target/mvn-dependency-list.log -B -DskipTests clean dependency:list install
 
-COPY . ./
-
-RUN ./mvnw -DoutputFile=target/mvn-dependency-list.log -B -DskipTests clean dependency:list install
-
-CMD ["sh", "-c", "java -jar target/*.jar"]
+CMD ["sh", "-c", "java -jar microServJava/product/target/*.jar"]
