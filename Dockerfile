@@ -29,7 +29,7 @@
 # ENTRYPOINT ["java","-jar","/usr/local/lib/product.jar"]
 
 FROM eclipse-temurin:21-jdk-alpine
-WORKDIR /product
+WORKDIR microServJava/product
 
 COPY . ./
 
