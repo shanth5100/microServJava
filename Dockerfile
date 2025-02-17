@@ -34,6 +34,7 @@
 # RUN ./mvnw -DoutputFile=target/mvn-dependency-list.log -B -DskipTests clean dependency:list install
 # CMD ["sh", "-c", "java -jar target/*.jar"]
 
+RUN echo I am from docker file
 FROM eclipse-temurin:21-jdk-alpine
 WORKDIR microServJava/product
 RUN microServJava/product/mvnw -DoutputFile=microServJava/product/target/mvn-dependency-list.log -B -DskipTests clean dependency:list install
